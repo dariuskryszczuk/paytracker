@@ -1,4 +1,4 @@
-package eu.greyson.currency;
+package eu.greyson;
 
 import eu.greyson.currency.designator.CurrencyDesignator;
 
