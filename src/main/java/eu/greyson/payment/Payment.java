@@ -1,4 +1,4 @@
-package eu.greyson;
+package eu.greyson.payment;
 
 import eu.greyson.currency.designator.CurrencyDesignator;
 
@@ -13,4 +13,9 @@ public interface Payment {
     CurrencyDesignator getDesignator();
 
     BigDecimal getAmount();
+
+    /**
+     * @return Designator and amount (USD 800, CZK 300 etc.)
+     */
+    String getDisplayName();
 }
