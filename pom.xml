@@ -6,6 +6,14 @@
     <groupId>eu.greyson</groupId>
     <artifactId>paytracker</artifactId>
     <version>1.0</version>
+    <dependencies>
+        <!-- the nullable and nutnull annotations, code quality lirary -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>13.0</version>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -19,6 +27,15 @@
                             <mainClass>eu.greyson.Paytracker</mainClass>
                         </manifest>
                     </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>

@@ -4,14 +4,13 @@ import java.util.Currency;
 import java.util.Locale;
 
 /**
- * <code>CurrencyCode</code> represents ISO 4217 standard of currency designators.
- * @see <a href="https://www.iso.org/iso-4217-currency-codes.html"></a>
+ * <code>CurrencySymbol</code> represents currency signs like $ (U+0024), € (U+20AC) etc.
  */
-class CurrencyCode implements CurrencyDesignator {
+class CurrencySymbol implements CurrencyDesignator {
 
-    private CurrencyCode() {}
+    private CurrencySymbol() {}
 
-    public static CurrencyCode parse(String s) {
+    public static CurrencySymbol parse(String s) {
         return null;
     }
 

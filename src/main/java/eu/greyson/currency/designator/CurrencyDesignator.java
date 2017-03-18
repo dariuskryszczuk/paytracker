@@ -1,6 +1,6 @@
 package eu.greyson.currency.designator;
 
-import com.sun.istack.internal.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Currency;
 import java.util.Locale;

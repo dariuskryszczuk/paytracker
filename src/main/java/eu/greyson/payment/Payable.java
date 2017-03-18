@@ -1,7 +1,7 @@
 package eu.greyson.payment;
 
-import com.sun.istack.internal.NotNull;
 import eu.greyson.currency.designator.CurrencyDesignator;
+import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 
