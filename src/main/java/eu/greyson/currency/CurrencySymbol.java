@@ -18,6 +18,8 @@ class CurrencySymbol implements CurrencyDesignator {
 
     @NotNull
     public static CurrencySymbol valueOf(String s) throws CurrencyFormatException {
+        if (s.trim().length() == 0 || s.trim().length() > 1)
+            throw CurrencyFormatException.forInputString(s);
         if (s.contains("$"))
             return new CurrencySymbol(Currency.getInstance("USD"));
         else if (s.contains("€"))

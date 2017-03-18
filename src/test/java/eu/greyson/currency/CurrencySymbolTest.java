@@ -39,6 +39,6 @@ public class CurrencySymbolTest {
 
     @Test(expected = CurrencyFormatException.class)
     public void test_should_throw_exception_from_invalid_symbol_cause() {
-        CurrencyFactory.getCurrency("&&&&");
+        CurrencyFactory.getCurrency("$#");
     }
 }
