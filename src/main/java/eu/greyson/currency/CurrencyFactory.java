@@ -6,11 +6,10 @@ public class CurrencyFactory {
 
     public static CurrencyDesignator getCurrency(String designator) {
         if (containsCurrencySymbol(designator))
-            return CurrencySymbol.parse(designator);
+            return CurrencySymbol.valueOf(designator);
         else
-            return CurrencyCode.parse(designator);
+            return CurrencyCode.valueOf(designator);
     }
-
 
     private static boolean containsCurrencySymbol(String s) {
         for (char c : s.toCharArray()) {

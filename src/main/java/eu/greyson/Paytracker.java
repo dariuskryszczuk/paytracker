@@ -1,13 +1,14 @@
 package eu.greyson;
 
-import eu.greyson.file.FileChooser;
-import eu.greyson.file.StarterFileChooser;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Currency;
 
 public class Paytracker {
 
-    public static void main(String args[]) {
-        FileChooser fileChooser = new StarterFileChooser();
-        fileChooser.chooseFile();
+    public static void main(String args[]) throws ParseException {
+        NumberFormat n = NumberFormat.getCurrencyInstance();
+        Currency currency = Currency.getInstance("$");
     }
 
 }

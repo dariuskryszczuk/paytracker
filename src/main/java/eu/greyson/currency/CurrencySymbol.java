@@ -1,5 +1,7 @@
 package eu.greyson.currency;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Currency;
 import java.util.Locale;
 
@@ -8,20 +10,27 @@ import java.util.Locale;
  */
 class CurrencySymbol implements CurrencyDesignator {
 
-    private CurrencySymbol() {}
+    private Currency currency;
 
-    public static CurrencySymbol parse(String s) {
-        return null;
+    private CurrencySymbol(Currency currency) {
+        this.currency = currency;
+    }
+
+    @NotNull
+    public static CurrencySymbol valueOf(String s) throws CurrencyFormatException {
+        if (s.contains("$"))
+            return new CurrencySymbol(Currency.getInstance("USD"));
+        else if (s.contains("€"))
+            return new CurrencySymbol(Currency.getInstance("EUR"));
+        else if (s.contains("£"))
+            return new CurrencySymbol(Currency.getInstance("GBP"));
+        else
+            throw CurrencyFormatException.forInputString(s);
     }
 
     @Override
+    @NotNull
     public Currency getCurrency() {
-        return null;
+        return currency;
     }
-
-    @Override
-    public Locale getCountry() {
-        return null;
-    }
-
 }

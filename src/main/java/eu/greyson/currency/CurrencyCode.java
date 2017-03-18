@@ -1,5 +1,7 @@
 package eu.greyson.currency;
 
+import com.sun.istack.internal.NotNull;
+
 import java.util.Currency;
 import java.util.Locale;
 
@@ -9,20 +11,24 @@ import java.util.Locale;
  */
 class CurrencyCode implements CurrencyDesignator {
 
-    private CurrencyCode() {}
+    private Currency currency;
 
-    public static CurrencyCode parse(String s) {
-        return null;
+    private CurrencyCode(Currency currency) {
+        this.currency = currency;
+    }
+
+    public static CurrencyCode valueOf(String s) throws CurrencyFormatException {
+        try {
+            Currency c = Currency.getInstance(s.toUpperCase());
+            return new CurrencyCode(c);
+        } catch (IllegalArgumentException e) {
+            throw CurrencyFormatException.forInputString(s);
+        }
     }
 
     @Override
+    @NotNull
     public Currency getCurrency() {
-        return null;
+        return currency;
     }
-
-    @Override
-    public Locale getCountry() {
-        return null;
-    }
-
 }
