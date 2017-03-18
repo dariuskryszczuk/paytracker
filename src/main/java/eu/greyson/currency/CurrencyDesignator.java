@@ -8,10 +8,18 @@ import java.util.Locale;
 public interface CurrencyDesignator {
 
     /**
-     * @return <code>Currency</code> identified by ISO 4217 currency code
+     * @return <code>java.util.Currency</code> object
      */
     @NotNull
     Currency getCurrency();
+
+    /**
+     * @return currency code ISO 4217
+     */
+    @NotNull
+    default String getCurrencyCode() {
+        return this.getCurrency().getCurrencyCode();
+    }
 
     /**
      * @return If no symbol can be determined, the ISO 4217 currency code is returned
@@ -29,7 +37,6 @@ public interface CurrencyDesignator {
     @NotNull
     default String getDisplayName() { return this.getCurrency().getDisplayName(Locale.US); }
 
-    @NotNull
     default boolean equals(CurrencyDesignator currencyDesignator) {
         return this.getCurrency().getNumericCode() == currencyDesignator.getCurrency().getNumericCode();
     }

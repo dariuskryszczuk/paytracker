@@ -10,7 +10,7 @@ public interface Payable {
      * Designator can be currency code ISO 4217 (USD, CZK etc.) or currency symbol ($, € etc.)
      * @return the implementation of the specific currency designator
      */
-    CurrencyDesignator getDesignator();
+    CurrencyDesignator getCurrency();
 
     BigDecimal getAmount();
 

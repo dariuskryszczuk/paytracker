@@ -17,7 +17,7 @@ public class CurrencyFactoryTest {
     @Before
     public void setUp() {
         symbols = Arrays.asList("$", "€", "£");
-        codes = Arrays.asList("USD", "EUR", "GBP", "GNF", "INR", "CZK", "cZk");
+        codes = Arrays.asList("USD", "EUR", "GBP", "GNF", "INR", "czk", "cZk");
     }
 
     @Test

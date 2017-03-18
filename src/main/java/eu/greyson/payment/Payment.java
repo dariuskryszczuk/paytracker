@@ -1,6 +1,8 @@
 package eu.greyson.payment;
 
+import com.google.gwt.thirdparty.guava.common.base.CharMatcher;
 import eu.greyson.currency.CurrencyDesignator;
+import eu.greyson.currency.CurrencyFactory;
 import eu.greyson.exchange.ExchangeRate;
 import eu.greyson.exchange.Exchangeable;
 import org.jetbrains.annotations.NotNull;
@@ -11,29 +13,24 @@ import java.util.Locale;
 public class Payment implements Payable, Exchangeable {
 
     private BigDecimal amount;
-    private Locale locale;
+    private CurrencyDesignator currency;
 
-    private Payment(BigDecimal amount, Locale locale) {
+    public Payment(BigDecimal amount, CurrencyDesignator currency) {
         this.amount = amount;
-        this.locale = locale;
+        this.currency = currency;
     }
 
-    public static Payment parse(String s) {
-        // todo
-        return null;
-    }
-
-    public CurrencyDesignator getDesignator() {
-        return null;
+    public CurrencyDesignator getCurrency() {
+        return currency;
     }
 
     public BigDecimal getAmount() {
-        return null;
+        return amount;
     }
 
     @NotNull
     public String getDisplayName() {
-        return "foo";
+        return currency.getDisplayName();
     }
 
     public ExchangeRate getExchangeRate() {

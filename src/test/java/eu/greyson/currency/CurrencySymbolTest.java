@@ -34,7 +34,7 @@ public class CurrencySymbolTest {
 
     @Test
     public void test_should_return_$_symbol_for_dollar() {
-        assertEquals(dollar1.getSymbol(), "$");
+        assertEquals("$", dollar1.getSymbol());
     }
 
     @Test(expected = CurrencyFormatException.class)

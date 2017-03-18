@@ -35,34 +35,34 @@ public class CurrencyCodeTest {
 
     @Test
     public void test_should_return_$_symbol() {
-        assertEquals(dollar1.getSymbol(), "$");
+        assertEquals("$", dollar1.getSymbol());
     }
 
     @Ignore("Need to add locale")
     @Test
     public void test_should_return_euro_symbol() {
-        assertEquals(euro.getSymbol(), "€");
+        assertEquals("€", euro.getSymbol());
     }
 
     @Ignore("Need to add locale")
     @Test
     public void test_should_return_pound_symbol() {
-        assertEquals(pound.getSymbol(), "£");
+        assertEquals("£", pound.getSymbol());
     }
 
     @Test
     public void test_should_return_display_name_for_dollar() {
-        assertEquals(dollar1.getDisplayName(), "US Dollar");
+        assertEquals("US Dollar", dollar1.getDisplayName());
     }
 
     @Test
     public void test_should_return_display_name_for_euro() {
-        assertEquals(euro.getDisplayName(), "Euro");
+        assertEquals("Euro", euro.getDisplayName());
     }
 
     @Test
     public void test_should_return_display_name_for_pound() {
-        assertEquals(pound.getDisplayName(), "British Pound Sterling");
+        assertEquals("British Pound Sterling", pound.getDisplayName());
     }
 
     @Test(expected = CurrencyFormatException.class)

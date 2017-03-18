@@ -1,5 +1,9 @@
 package eu.greyson.payment;
 
-// todo
+import org.junit.Before;
+
 public class PaymentTest {
+
+
+
 }

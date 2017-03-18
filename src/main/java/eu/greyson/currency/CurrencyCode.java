@@ -1,9 +1,8 @@
 package eu.greyson.currency;
 
-import com.sun.istack.internal.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Currency;
-import java.util.Locale;
 
 /**
  * <code>CurrencyCode</code> represents ISO 4217 standard of currency designators.
