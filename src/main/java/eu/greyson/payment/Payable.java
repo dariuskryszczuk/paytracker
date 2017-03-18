@@ -1,5 +1,6 @@
 package eu.greyson.payment;
 
+import com.sun.istack.internal.NotNull;
 import eu.greyson.currency.designator.CurrencyDesignator;
 
 import java.math.BigDecimal;
@@ -16,5 +17,6 @@ public interface Payable {
     /**
      * @return Designator and amount (USD 800, CZK 300 etc.)
      */
+    @NotNull
     String getDisplayName();
 }

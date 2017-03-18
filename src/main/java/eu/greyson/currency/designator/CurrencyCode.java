@@ -12,7 +12,7 @@ public class CurrencyCode implements CurrencyDesignator {
     private CurrencyCode() {}
 
     public static CurrencyCode parse(String s) {
-        // todo
+        return null;
     }
 
     @Override
@@ -21,18 +21,8 @@ public class CurrencyCode implements CurrencyDesignator {
     }
 
     @Override
-    public String getSymbol() {
-        return this.getCurrency().getSymbol();
-    }
-
-    @Override
     public Locale getCountry() {
         return null;
-    }
-
-    @Override
-    public boolean equals(CurrencyDesignator c) {
-        return this.getCurrency().getNumericCode() == c.getCurrency().getNumericCode();
     }
 
 }

@@ -1,5 +1,7 @@
 package eu.greyson.currency.designator;
 
+import com.sun.istack.internal.NotNull;
+
 import java.util.Currency;
 import java.util.Locale;
 
@@ -11,18 +13,20 @@ public interface CurrencyDesignator {
     Currency getCurrency();
 
     /**
-     * @return symbol of this currency
+     * @return Object representing a specific geographical, political, or cultural region
      */
-    String getSymbol();
+     Locale getCountry();
 
     /**
-     * @return object representing a specific geographical, political, or cultural region
+     * @return If no symbol can be determined, the ISO 4217 currency code is returned
      */
-    Locale getCountry();
+    @NotNull
+    default String getSymbol() {
+        return this.getCurrency().getSymbol();
+    }
 
-    /**
-     * override of the objects method is needed
-     * @return
-     */
-    boolean equals(CurrencyDesignator currencyDesignator);
+    @NotNull
+    default boolean equals(CurrencyDesignator currencyDesignator) {
+        return this.getCurrency().getNumericCode() == currencyDesignator.getCurrency().getNumericCode();
+    }
 }
