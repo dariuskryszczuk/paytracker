@@ -1,6 +1,6 @@
-package eu.greyson.currency.exchange;
+package eu.greyson.exchange;
 
-import eu.greyson.currency.designator.CurrencyDesignator;
+import eu.greyson.currency.CurrencyDesignator;
 
 import java.math.BigDecimal;
 

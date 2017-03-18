@@ -1,4 +1,4 @@
-package eu.greyson.currency.designator;
+package eu.greyson.currency;
 
 import org.jetbrains.annotations.NotNull;
 

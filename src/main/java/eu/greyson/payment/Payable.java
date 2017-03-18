@@ -1,6 +1,6 @@
 package eu.greyson.payment;
 
-import eu.greyson.currency.designator.CurrencyDesignator;
+import eu.greyson.currency.CurrencyDesignator;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
