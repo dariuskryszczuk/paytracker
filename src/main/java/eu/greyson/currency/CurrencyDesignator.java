@@ -3,6 +3,7 @@ package eu.greyson.currency;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Currency;
+import java.util.Locale;
 
 public interface CurrencyDesignator {
 
@@ -24,8 +25,9 @@ public interface CurrencyDesignator {
      * Gets the name that is suitable for displaying this currency.
      * @return
      */
+    // todo: add Locale.US to the configuration file
     @NotNull
-    default String getDisplayName() { return this.getCurrency().getDisplayName(); }
+    default String getDisplayName() { return this.getCurrency().getDisplayName(Locale.US); }
 
     @NotNull
     default boolean equals(CurrencyDesignator currencyDesignator) {
