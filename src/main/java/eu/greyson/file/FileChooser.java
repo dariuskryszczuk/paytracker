@@ -8,7 +8,7 @@ import java.io.File;
 
 public abstract class FileChooser extends JFileChooser {
 
-    protected FileChooser() {
+    FileChooser() {
         this.setCurrentDirectory(this.getDefaultFolder());
         this.setFileFilter(this.getFilters());
     }
@@ -20,7 +20,8 @@ public abstract class FileChooser extends JFileChooser {
     abstract File getDefaultFolder();
 
     /**
-     * Comma separated file extensions: e.g. new FileNameExtensionFilter("jpg", "gif");
+     * Description and comma separated file extensions:
+     * e.g. new FileNameExtensionFilter("JPG and GIF", "jpg", "gif");
      * @return filters
      */
     abstract FileNameExtensionFilter getFilters();

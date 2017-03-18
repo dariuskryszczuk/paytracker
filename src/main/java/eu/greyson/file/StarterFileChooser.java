@@ -8,7 +8,7 @@ import java.nio.file.Paths;
  * This file picker should open on load of the application so the
  * user can pick "starter" data.
  */
-public class InitDataChooser extends FileChooser {
+public class StarterFileChooser extends FileChooser {
 
     @Override
     File getDefaultFolder() {
@@ -17,6 +17,6 @@ public class InitDataChooser extends FileChooser {
 
     @Override
     FileNameExtensionFilter getFilters() {
-        return new FileNameExtensionFilter("txt");
+        return new FileNameExtensionFilter("txt files", "txt");
     }
 }
