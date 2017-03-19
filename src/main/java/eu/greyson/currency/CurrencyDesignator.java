@@ -8,7 +8,7 @@ import java.util.Locale;
 public interface CurrencyDesignator {
 
     /**
-     * @return <code>java.util.Currency</code> object
+     * @return {@code java.util.Currency} object
      */
     @NotNull
     Currency getCurrency();

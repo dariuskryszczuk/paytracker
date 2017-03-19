@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Currency;
 
 /**
- * <code>CurrencyCode</code> represents ISO 4217 standard of currency designators.
+ * (@code CurrencyCode} represents ISO 4217 standard of currency designators.
  * @see <a href="https://www.iso.org/iso-4217-currency-codes.html"></a>
  */
 class CurrencyCode implements CurrencyDesignator {

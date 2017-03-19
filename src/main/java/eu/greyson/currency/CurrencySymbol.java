@@ -6,7 +6,7 @@ import java.util.Currency;
 import java.util.Locale;
 
 /**
- * <code>CurrencySymbol</code> represents currency signs like $ (U+0024), € (U+20AC) etc.
+ * {@code CurrencySymbol} represents currency signs like $ (U+0024), € (U+20AC) etc.
  */
 class CurrencySymbol implements CurrencyDesignator {
 

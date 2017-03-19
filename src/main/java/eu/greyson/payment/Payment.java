@@ -4,8 +4,12 @@ import eu.greyson.currency.CurrencyDesignator;
 import eu.greyson.exchange.ExchangeRate;
 import eu.greyson.exchange.Exchangeable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
+
+import static java.math.BigDecimal.ZERO;
 
 public class Payment implements Payable, Exchangeable {
 

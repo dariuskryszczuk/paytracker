@@ -20,7 +20,7 @@ public class PaymentFileParser implements Parser<List<Payable>> {
      * USD 1000
      * HKD 100
      * USD -100
-     * It is loaded with <code>StarterFileChooser</code>.
+     * It is loaded with {@code StarterFileChooser}.
      *
      * @param path to the file with 'starter' data.
      * @return

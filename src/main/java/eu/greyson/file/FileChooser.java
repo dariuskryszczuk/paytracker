@@ -27,7 +27,7 @@ public abstract class FileChooser extends JFileChooser {
     abstract FileNameExtensionFilter getFilters();
 
     /**
-     * Opens <code>javax.swing</code> dialog for picking files.
+     * Opens {@code javax.swing} dialog for picking files.
      * @return Picked file or null.
      */
     @Nullable
