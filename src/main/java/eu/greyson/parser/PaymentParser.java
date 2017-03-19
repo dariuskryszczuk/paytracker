@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 public class PaymentParser implements Parser<Payable> {
 
     /**
-     * @param s Parsable string input (probably something like 'USD 800,50').
+     * @param s Parsable string input (something like 'USD 800,50').
      * @return
      * @throws ParserException
      */
@@ -28,5 +28,4 @@ public class PaymentParser implements Parser<Payable> {
         // create payment:Playable
         return new Payment(amount, currency);
     }
-
 }

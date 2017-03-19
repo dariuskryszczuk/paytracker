@@ -1,9 +1,12 @@
 package eu.greyson.parser;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,14 +20,21 @@ public class AmountParser implements Parser<BigDecimal> {
     @NotNull
     @Override
     public BigDecimal parse(String s) throws ParserException {
-        Pattern pattern = Pattern.compile("[-\\d.,]");
-        Matcher matcher = pattern.matcher(s);
-        if (matcher.find()) {
-            String digits = matcher.group(1);
-            String cleanDigits = digits.replaceAll(",", ".");
+        String amount = findAmount(s);
+        if (amount.trim().length() > 0) {
+            String cleanDigits = amount.replaceAll(",", ".").replaceAll(" ", "");
             return new BigDecimal(cleanDigits);
         } else
             throw ParserException.forInputString(s);
     }
-    
+
+    static String findAmount(String s) {
+        List<String> allMatches = new ArrayList<>();
+        Pattern pattern = Pattern.compile("[-\\d]?[\\d., ][\\d]?");
+        Matcher matcher = pattern.matcher(s);
+        while (matcher.find()) {
+            allMatches.add(matcher.group());
+        }
+        return StringUtils.join(allMatches, "");
+    }
 }

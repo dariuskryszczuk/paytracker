@@ -18,7 +18,7 @@ class CurrencyCode implements CurrencyDesignator {
 
     public static CurrencyCode valueOf(String s) throws CurrencyFormatException {
         try {
-            Currency c = Currency.getInstance(s.toUpperCase());
+            Currency c = Currency.getInstance(s.trim().toUpperCase());
             return new CurrencyCode(c);
         } catch (IllegalArgumentException e) {
             throw CurrencyFormatException.forInputString(s);

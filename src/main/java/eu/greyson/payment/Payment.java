@@ -25,10 +25,9 @@ public class Payment implements Payable, Exchangeable {
         return amount;
     }
 
-    //todo
     @NotNull
     public String getDisplayName() {
-        return currency.getDisplayName();
+        return getCurrency().getCurrencyCode() + " " + getAmount().toString();
     }
 
     public ExchangeRate getExchangeRate() {

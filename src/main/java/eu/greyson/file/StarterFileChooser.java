@@ -27,8 +27,4 @@ public class StarterFileChooser extends FileChooser {
     FileNameExtensionFilter getFilters() {
         return new FileNameExtensionFilter("txt files", "txt");
     }
-
-    public static Stream<String> getFileRows(Path p) throws IOException {
-        return Files.lines(p);
-    }
 }

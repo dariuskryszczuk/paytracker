@@ -14,8 +14,9 @@ public class CurrencyParser implements Parser<CurrencyDesignator> {
     @NotNull
     @Override
     public CurrencyDesignator parse(String s) throws ParserException {
-        String lettersAndSymbols = s.replaceAll("[-\\d.,]", "");
-        if (lettersAndSymbols.length() > 0)
+        String amount = AmountParser.findAmount(s);
+        String lettersAndSymbols = s.replaceAll(amount, "");
+        if (lettersAndSymbols.trim().length() > 0)
             return CurrencyFactory.getCurrency(lettersAndSymbols);
         else
             throw ParserException.forInputString(s);
