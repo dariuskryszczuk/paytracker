@@ -1,11 +1,9 @@
 package eu.greyson.currency;
 
-public class CurrencyFormatException extends IllegalArgumentException {
+class CurrencyFormatException extends IllegalArgumentException {
     static final long serialVersionUID = 42L;
 
-    public CurrencyFormatException() {}
-
-    public CurrencyFormatException(String msg) {
+    private CurrencyFormatException(String msg) {
         super(msg);
     }
 

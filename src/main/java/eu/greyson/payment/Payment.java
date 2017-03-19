@@ -12,7 +12,7 @@ public class Payment implements Payable, Exchangeable {
     private BigDecimal amount;
     private CurrencyDesignator currency;
 
-    Payment(BigDecimal amount, CurrencyDesignator currency) {
+    public Payment(BigDecimal amount, CurrencyDesignator currency) {
         this.amount = amount;
         this.currency = currency;
     }
@@ -25,6 +25,7 @@ public class Payment implements Payable, Exchangeable {
         return amount;
     }
 
+    //todo
     @NotNull
     public String getDisplayName() {
         return currency.getDisplayName();

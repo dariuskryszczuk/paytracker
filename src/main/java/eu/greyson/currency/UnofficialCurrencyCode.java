@@ -27,6 +27,14 @@ class UnofficialCurrencyCode implements CurrencyDesignator {
             case "CNT":
             case "RMB":
                 return new UnofficialCurrencyCode(Currency.getInstance("CNY"));
+            case "GGP":
+            case "IMP":
+            case "JEP":
+                return new UnofficialCurrencyCode(Currency.getInstance("GBP"));
+            case "KID":
+                return new UnofficialCurrencyCode(Currency.getInstance("AUD"));
+            case "NIS":
+                return new UnofficialCurrencyCode(Currency.getInstance("ILS"));
             default:
                 throw CurrencyFormatException.forInputString(s);
         }
@@ -41,7 +49,7 @@ class UnofficialCurrencyCode implements CurrencyDesignator {
     /**
      * @return List of all unofficial currency codes.
      */
-    public static List<String> getList() {
+    static List<String> getList() {
         return Arrays.asList("CNH", "CTN", "RMB", "GGP", "IMP", "JEP", "KID", "NIS", "PRB", "TVD");
     }
 }

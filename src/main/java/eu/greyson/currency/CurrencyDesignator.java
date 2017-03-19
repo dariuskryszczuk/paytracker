@@ -22,7 +22,7 @@ public interface CurrencyDesignator {
     }
 
     /**
-     * @return If no symbol can be determined, the ISO 4217 currency code is returned
+     * @return If no symbol can be determined then the ISO 4217 currency code is returned.
      */
     @NotNull
     default String getSymbol() {
