@@ -1,14 +1,29 @@
 package eu.greyson.payment;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 
 import static eu.greyson.payment.PaymentParser.parse;
 import static org.junit.Assert.assertEquals;
 
 public class PaymentParserTest {
+
+    private Path testInput;
+
+    @Before
+    public void setUp() {
+        String path = this.getClass().getResource("test-input.txt").getPath();
+        testInput = Paths.get(path);
+    }
 
     @Test
     public void test_should_parse_payment_from_positive_number_and_code_string() {
@@ -23,7 +38,6 @@ public class PaymentParserTest {
         assertEquals(new BigDecimal(-800), parse(input).getAmount());
         assertEquals("USD", parse(input).getCurrency().getCurrencyCode());
     }
-
 
     @Test
     public void test_should_parse_payment_from_large_negative_number_and_code_string() {
@@ -60,4 +74,11 @@ public class PaymentParserTest {
         assertEquals(new BigDecimal(1003002200), parse(input).getAmount());
         assertEquals("GBP", parse(input).getCurrency().getCurrencyCode());
     }
+
+    @Test
+    public void test_should_return_five_payment_objects_from_input_file() throws IOException {
+        final List<Payment> paymentList = parse(testInput);
+        assertEquals(5, paymentList.size());
+    }
+
 }
