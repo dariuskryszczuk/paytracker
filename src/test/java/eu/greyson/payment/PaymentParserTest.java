@@ -81,4 +81,39 @@ public class PaymentParserTest {
         assertEquals(5, paymentList.size());
     }
 
+    @Test
+    public void test_should_return_USD_payment_from_test_input_file() throws IOException {
+        final List<Payable> paymentList = parse(testInput);
+        assertEquals("USD", paymentList.get(0).getCurrency().getCurrencyCode());
+        assertEquals(new BigDecimal(1000), paymentList.get(0).getAmount());
+    }
+
+    @Test
+    public void test_should_return_HKD_payment_from_test_input_file() throws IOException {
+        final List<Payable> paymentList = parse(testInput);
+        assertEquals("HKD", paymentList.get(1).getCurrency().getCurrencyCode());
+        assertEquals(new BigDecimal(100), paymentList.get(1).getAmount());
+    }
+
+    @Test
+    public void test_should_return_USD_negative_payment_from_test_input_file() throws IOException {
+        final List<Payable> paymentList = parse(testInput);
+        assertEquals("USD", paymentList.get(2).getCurrency().getCurrencyCode());
+        assertEquals(new BigDecimal(-100), paymentList.get(2).getAmount());
+    }
+
+    @Test
+    public void test_should_return_CNY_not_RMB_payment_from_test_input_file() throws IOException {
+        final List<Payable> paymentList = parse(testInput);
+        assertEquals("CNY", paymentList.get(3).getCurrency().getCurrencyCode());
+        assertEquals(new BigDecimal(2000), paymentList.get(3).getAmount());
+    }
+
+    @Test
+    public void test_should_return_another_HKD_payment_from_test_input_file() throws IOException {
+        final List<Payable> paymentList = parse(testInput);
+        assertEquals("HKD", paymentList.get(4).getCurrency().getCurrencyCode());
+        assertEquals(new BigDecimal(200), paymentList.get(4).getAmount());
+    }
+
 }
