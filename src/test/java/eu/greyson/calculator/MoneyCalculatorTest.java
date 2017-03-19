@@ -34,7 +34,7 @@ public class MoneyCalculatorTest {
 
     @Test
     public void test_should_add_300_dollars_to_negative_150_dollars() {
-        assertEquals(valueOf(150), sum(dollar300, dollarNegative150).getAmount());
+        assertEquals(valueOf(150), plus(dollar300, dollarNegative150).getAmount());
     }
 
     @Test
