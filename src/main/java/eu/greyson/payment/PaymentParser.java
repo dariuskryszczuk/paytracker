@@ -15,10 +15,10 @@ class PaymentParser {
 
     /**
      * @param s Will be usually in format: USD 800
-     * @return <code>Payment</code>
+     * @return <code>Payable</code>
      * todo: add decimal point and symbol support
      */
-    static Payment parse(String s) {
+    static Payable parse(String s) {
         BigDecimal digits = new BigDecimal(s.replaceAll("[^\\d-]", ""));
         String letters = CharMatcher.JAVA_LETTER.retainFrom(s);
         return new Payment(digits, CurrencyFactory.getCurrency(letters));
@@ -31,8 +31,8 @@ class PaymentParser {
      * @param p
      * @return
      */
-    static List<Payment> parse(Path p) throws IOException {
-        List<Payment> payments = new ArrayList<>();
+    static List<Payable> parse(Path p) throws IOException {
+        List<Payable> payments = new ArrayList<>();
         try (Stream<String> stream = Files.lines(p)) {
             stream.forEach(row -> payments.add(PaymentParser.parse(row)));
         }

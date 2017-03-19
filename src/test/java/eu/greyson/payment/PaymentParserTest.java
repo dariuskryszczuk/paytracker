@@ -77,7 +77,7 @@ public class PaymentParserTest {
 
     @Test
     public void test_should_return_five_payment_objects_from_input_file() throws IOException {
-        final List<Payment> paymentList = parse(testInput);
+        final List<Payable> paymentList = parse(testInput);
         assertEquals(5, paymentList.size());
     }
 
