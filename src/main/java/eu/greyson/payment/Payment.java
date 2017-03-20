@@ -1,19 +1,13 @@
 package eu.greyson.payment;
 
 import eu.greyson.currency.CurrencyDesignator;
-import eu.greyson.exchange.ExchangeRate;
-import eu.greyson.exchange.Exchangeable;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 
-import static java.math.BigDecimal.ZERO;
-
-public class Payment implements Payable, Exchangeable {
+public class Payment implements Payable {
 
     private BigDecimal amount;
     private CurrencyDesignator currency;
@@ -38,10 +32,6 @@ public class Payment implements Payable, Exchangeable {
     @NotNull
     public String getDisplayName() {
         return getCurrency().getCurrencyCode() + " " + getAmount().toString();
-    }
-
-    public ExchangeRate getExchangeRate() {
-        return null;
     }
 
     @Override
