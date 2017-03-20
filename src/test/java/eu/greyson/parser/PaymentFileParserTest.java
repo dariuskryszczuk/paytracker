@@ -18,7 +18,7 @@ public class PaymentFileParserTest {
     @Before
     public void setUp() {
         path = this.getClass().getResource("test-input.txt").getPath();
-        parser = new PaymentFileParser();
+        parser = new PaymentFileParser(new PaymentParser());
     }
 
     @Test

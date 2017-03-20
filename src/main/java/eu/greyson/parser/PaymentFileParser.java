@@ -13,7 +13,11 @@ import java.util.stream.Stream;
 
 public class PaymentFileParser implements Parser<List<Payable>> {
 
-    private final Parser<Payable> payableParser = new PaymentParser();
+    private final Parser<Payable> payableParser;
+
+    PaymentFileParser(Parser<Payable> parser) {
+        this.payableParser = parser;
+    }
 
     /**
      * This parser is used for txt file containing payments in each of its line:
