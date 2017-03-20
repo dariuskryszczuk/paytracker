@@ -9,6 +9,14 @@ import java.math.BigDecimal;
 
 public class PaymentParser implements Parser<Payable> {
 
+    private Parser<CurrencyDesignator> currencyParser;
+    private Parser<BigDecimal> amountParser;
+
+    public PaymentParser(Parser<CurrencyDesignator> currencyParser, Parser<BigDecimal> amountParser) {
+        this.currencyParser = currencyParser;
+        this.amountParser = amountParser;
+    }
+
     /**
      * @param s Parsable string input (something like 'USD 800,50').
      * @return
@@ -18,11 +26,9 @@ public class PaymentParser implements Parser<Payable> {
     @Override
     public Payable parse(String s) throws ParserException {
         // get amount:BigDecimal from string
-        Parser<BigDecimal> amountParser = new AmountParser();
         BigDecimal amount = amountParser.parse(s);
 
         // get currency:CurrencyDesignator
-        Parser<CurrencyDesignator> currencyParser = new CurrencyParser();
         CurrencyDesignator currency = currencyParser.parse(s);
 
         // create payment:Playable

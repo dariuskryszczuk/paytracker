@@ -23,10 +23,11 @@ public interface CurrencyDesignator {
 
     /**
      * @return If no symbol can be determined then the ISO 4217 currency code is returned.
+     * todo: make locale configurable
      */
     @NotNull
     default String getSymbol() {
-        return this.getCurrency().getSymbol();
+        return this.getCurrency().getSymbol(Locale.US);
     }
 
     /**

@@ -1,11 +1,18 @@
 package eu.greyson.parser;
 
+import com.google.common.io.Resources;
+import eu.greyson.currency.CurrencyDesignator;
 import eu.greyson.payment.Payable;
+import eu.greyson.payment.Payment;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -16,9 +23,12 @@ public class PaymentFileParserTest {
     private Parser<List<Payable>> parser;
 
     @Before
-    public void setUp() {
-        path = this.getClass().getResource("test-input.txt").getPath();
-        parser = new PaymentFileParser(new PaymentParser());
+    public void setUp() throws IOException {
+        URL url = this.getClass().getResource("test-input.txt");
+        File f = new File(url.getFile());
+        Parser<Payable> paymentParser = new PaymentParser(new CurrencyParser(), new AmountParser());
+        path = f.getCanonicalPath();
+        parser = new PaymentFileParser(paymentParser);
     }
 
     @Test
@@ -65,5 +75,4 @@ public class PaymentFileParserTest {
         assertEquals("HKD", paymentList.get(4).getCurrency().getCurrencyCode());
         assertEquals(new BigDecimal(200), paymentList.get(4).getAmount());
     }
-
 }

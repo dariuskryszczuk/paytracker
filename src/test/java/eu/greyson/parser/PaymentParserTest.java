@@ -1,5 +1,6 @@
 package eu.greyson.parser;
 
+import eu.greyson.currency.CurrencyDesignator;
 import eu.greyson.payment.Payable;
 import eu.greyson.payment.Payment;
 import org.junit.Before;
@@ -16,11 +17,15 @@ import static org.junit.Assert.assertEquals;
 
 public class PaymentParserTest {
 
+    private Parser<CurrencyDesignator> currencyParser;
+    private Parser<BigDecimal> amountParser;
     private Parser<Payable> parser;
 
     @Before
     public void setUp() {
-        parser = new PaymentParser();
+        currencyParser = new CurrencyParser();
+        amountParser = new AmountParser();
+        parser = new PaymentParser(currencyParser, amountParser);
     }
 
     @Test
