@@ -1,49 +1,35 @@
 package eu.greyson;
 
-import eu.greyson.file.StarterFileChooser;
 import eu.greyson.parser.*;
 import eu.greyson.payment.Payable;
 
-import java.io.*;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import static eu.greyson.PrintManager.*;
+
 public class Paytracker {
 
     public static void main(String args[]) throws IOException {
-        final Parser<Payable> payableParser = new PaymentParser(new CurrencyParser(), new AmountParser());
-        final Parser<List<Payable>> fileParser = new PaymentFileParser(payableParser);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        System.out.println("Do you want to load file with payments? (Y/n)");
-        String answer = br.readLine();
+        printWelcome();
+        String answer = printLoadFileQuestion(br);
         if (answer.trim().equalsIgnoreCase("y")) {
-            File f = new StarterFileChooser().chooseFile();
-            if (f != null) {
-                try {
-                    Bookkeeper.addAll(fileParser.parse(f.getPath()));
-                    System.out.println("Loaded");
-                } catch (Exception e) {
-                    System.out.println(e.getLocalizedMessage());
-                }
-            }
+            showDialog();
+            printTotalTable();
         }
-        System.out.println("You can write your payments below:");
         initTimer();
         while(true) {
             try {
-                System.out.print("Payment: ");
-                String input = br.readLine();
-                if (isPrint(input)) {
-                    printTotals();
-                    continue;
-                }
-                if (isQuit(input)) {
+                String input = printPaymentQuestion(br);
+                if (input.equalsIgnoreCase("quit")) {
                     break;
                 }
-                Payable p = payableParser.parse(input);
+                Payable p = new PaymentParser(new CurrencyParser(), new AmountParser()).parse(input);
                 Bookkeeper.add(p);
             } catch (Exception e) {
                 System.out.println(e.getLocalizedMessage());
@@ -52,28 +38,13 @@ public class Paytracker {
         System.exit(1);
     }
 
-    private static boolean isQuit(String input) {
-        return input.equalsIgnoreCase("quit");
-    }
-
-    private static boolean isPrint(String input) {
-        return input.equalsIgnoreCase("print");
-    }
-
-    private static void printTotals() {
-        System.out.println("\n");
-        System.out.println("TOTAL");
-        new Bookkeeper().countTotals()
-                .forEach(payable -> System.out.println(payable.getDisplayName() + "\n"));
-    }
-
     private static void initTimer() {
         Runnable r = new Runnable() {
             public void run() {
-                printTotals();
+                printTotalTable();
             }
         };
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-        executor.scheduleAtFixedRate(r, 0, 60, TimeUnit.SECONDS);
+        executor.scheduleAtFixedRate(r, 60, 60, TimeUnit.SECONDS);
     }
 }
