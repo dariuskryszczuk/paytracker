@@ -15,7 +15,7 @@ public class PaymentFileParser implements Parser<List<Payable>> {
 
     private final Parser<Payable> payableParser;
 
-    PaymentFileParser(Parser<Payable> parser) {
+    public PaymentFileParser(Parser<Payable> parser) {
         this.payableParser = parser;
     }
 
