@@ -1,13 +1,10 @@
 package eu.greyson.calculator;
 
-import eu.greyson.currency.CurrencyDesignator;
 import eu.greyson.payment.Payable;
 import eu.greyson.payment.Payment;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 
 import static java.math.BigDecimal.ZERO;
 
