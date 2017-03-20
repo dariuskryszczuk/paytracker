@@ -9,6 +9,7 @@ import static eu.greyson.calculator.MoneyCalculator.minus;
 import static eu.greyson.calculator.MoneyCalculator.plus;
 import static eu.greyson.calculator.MoneyCalculator.sum;
 import static eu.greyson.currency.CurrencyFactory.getCurrency;
+import static eu.greyson.currency.CurrencySymbol.Symbol.DOLLAR;
 import static java.math.BigDecimal.valueOf;
 import static org.junit.Assert.assertEquals;
 
@@ -23,7 +24,7 @@ public class MoneyCalculatorTest {
     public void setUp() {
         dollar300 = new Payment(valueOf(300), getCurrency("USD"));
         dollarNegative150 = new Payment(valueOf(-150), getCurrency("USD"));
-        dollar500 = new Payment(valueOf(500), getCurrency("$"));
+        dollar500 = new Payment(valueOf(500), getCurrency(DOLLAR));
         euro20 = new Payment(valueOf(20), getCurrency("EUR"));
     }
 

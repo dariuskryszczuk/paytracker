@@ -33,4 +33,6 @@ public interface Payable {
     default boolean isSameCurrency(CurrencyDesignator currency) {
         return this.getCurrency().equals(currency);
     }
+
+    Payable add(Payable payable);
 }

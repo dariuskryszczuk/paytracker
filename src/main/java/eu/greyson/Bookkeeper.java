@@ -1,43 +1,51 @@
 package eu.greyson;
 
+import eu.greyson.currency.CurrencyDesignator;
 import eu.greyson.payment.Payable;
 import eu.greyson.payment.Payment;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 class Bookkeeper {
 
     private static List<Payable> payments = new ArrayList<>();
 
-    private static void add(Payable p) {
-        Bookkeeper.add(p);
+    static void add(Payable p) {
+        Bookkeeper.payments.add(p);
     }
 
     static void addAll(List<Payable> payableList) {
         Bookkeeper.payments.addAll(payableList);
     }
 
-    static List<Payable> getPayments() {
+    List<Payable> getPayments() {
         return new ArrayList<>(payments);
     }
 
+    Collection<Payable> countTotals() {
+        Map<String, Payable> totals = new HashMap<>();
+        getPayments().forEach(p -> {
+            CurrencyDesignator currency = p.getCurrency();
+            if (!totals.containsKey(currency.getCurrencyCode())) {
+                Payable zero = Payment.zero(currency);
+                totals.put(currency.getCurrencyCode(), zero);
+            }
+            Payable previous = totals.get(currency.getCurrencyCode());
+            Payable newTotal = previous.add(p);
+            totals.put(currency.getCurrencyCode(), newTotal);
+        });
+        return totals.values();
+    }
 
-//    public static List<Payable> aggregate() {
-//        List<Payable> aggregated = new ArrayList<>();
-//        for (Payable p : getSortedByCode()) {
-//
-//        }
-//    }
+    static void reset() {
+        payments = new ArrayList<>();
+    }
 
-    static List<Payable> getSortedByCode() {
+    List<Payable> getSortedPaymentsByCurrency() {
         List<Payable> sorted = new ArrayList<>(payments);
         if (sorted.size() > 0) {
             sorted.sort(Comparator.comparing(p -> p.getCurrency().getCurrencyCode()));
         }
         return sorted;
     }
-
 }

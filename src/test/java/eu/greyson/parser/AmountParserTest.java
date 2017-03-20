@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
+import static eu.greyson.currency.CurrencySymbol.Symbol.DOLLAR;
 import static org.junit.Assert.assertEquals;
 
 public class AmountParserTest {
@@ -55,7 +56,7 @@ public class AmountParserTest {
 
     @Test
     public void test_should_parse_number_22_from_$22_string() {
-        final String input = "$22";
+        final String input = DOLLAR + "22";
         assertEquals(BigDecimal.valueOf(22), parser.parse(input));
     }
 

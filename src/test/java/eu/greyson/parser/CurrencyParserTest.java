@@ -4,6 +4,8 @@ import eu.greyson.currency.CurrencyDesignator;
 import org.junit.Before;
 import org.junit.Test;
 
+import static eu.greyson.currency.CurrencySymbol.Symbol.DOLLAR;
+import static eu.greyson.currency.CurrencySymbol.Symbol.EURO;
 import static org.junit.Assert.assertEquals;
 
 public class CurrencyParserTest {
@@ -31,7 +33,7 @@ public class CurrencyParserTest {
 
     @Test
     public void test_should_return_USD_currency_from_$_800_string() {
-        final String input = "$ 800";
+        final String input = DOLLAR + " 800";
         final CurrencyDesignator currency = parser.parse(input);
         assertEquals("USD", currency.getCurrencyCode());
     }
@@ -39,7 +41,7 @@ public class CurrencyParserTest {
 
     @Test
     public void test_should_return_EUR_currency_from_22euro_symbol_string() {
-        final String input = "22€";
+        final String input = "22" + EURO;
         final CurrencyDesignator currency = parser.parse(input);
         assertEquals("EUR", currency.getCurrencyCode());
     }

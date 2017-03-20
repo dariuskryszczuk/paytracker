@@ -13,6 +13,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static eu.greyson.currency.CurrencySymbol.Symbol.DOLLAR;
+import static eu.greyson.currency.CurrencySymbol.Symbol.EURO;
+import static eu.greyson.currency.CurrencySymbol.Symbol.POUND;
 import static org.junit.Assert.assertEquals;
 
 public class PaymentParserTest {
@@ -66,7 +69,7 @@ public class PaymentParserTest {
 
     @Test
     public void test_should_parse_payment_from_$_and_negative_number_string() {
-        final String input = "-350$";
+        final String input = "-350" + DOLLAR;
         final Payable p = parser.parse(input);
         assertEquals(new BigDecimal(-350), p.getAmount());
         assertEquals("USD", p.getCurrency().getCurrencyCode());
@@ -75,7 +78,7 @@ public class PaymentParserTest {
 
     @Test
     public void test_should_parse_payment_from_euro_symbol_and_large_number_string() {
-        final String input = "€100673826384756";
+        final String input = EURO + "100673826384756";
         final Payable p = parser.parse(input);
         assertEquals(BigDecimal.valueOf(100673826384756D), p.getAmount());
         assertEquals("EUR", p.getCurrency().getCurrencyCode());
@@ -84,7 +87,7 @@ public class PaymentParserTest {
 
     @Test
     public void test_should_parse_payment_from_pound_symbol_and_large_number_string() {
-        final String input = "£ 100 300 2200";
+        final String input = POUND + " 100 300 2200";
         final Payable p = parser.parse(input);
         assertEquals(new BigDecimal(1003002200), p.getAmount());
         assertEquals("GBP", p.getCurrency().getCurrencyCode());

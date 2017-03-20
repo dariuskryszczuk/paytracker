@@ -41,4 +41,5 @@ public interface CurrencyDesignator {
     default boolean equals(CurrencyDesignator currencyDesignator) {
         return this.getCurrency().getNumericCode() == currencyDesignator.getCurrency().getNumericCode();
     }
+
 }

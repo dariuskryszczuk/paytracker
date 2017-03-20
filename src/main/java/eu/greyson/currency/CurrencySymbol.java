@@ -8,7 +8,7 @@ import java.util.Locale;
 /**
  * {@code CurrencySymbol} represents currency signs like $ (U+0024), € (U+20AC) etc.
  */
-class CurrencySymbol implements CurrencyDesignator {
+public class CurrencySymbol implements CurrencyDesignator {
 
     private Currency currency;
 
@@ -20,11 +20,11 @@ class CurrencySymbol implements CurrencyDesignator {
     static CurrencySymbol valueOf(String s) throws CurrencyFormatException {
         if (s.trim().length() == 0 || s.trim().length() > 1)
             throw CurrencyFormatException.forInputString(s);
-        if (s.contains("$"))
+        if (s.contains(Symbol.DOLLAR))
             return new CurrencySymbol(Currency.getInstance("USD"));
-        else if (s.contains("€"))
+        else if (s.contains(Symbol.EURO))
             return new CurrencySymbol(Currency.getInstance("EUR"));
-        else if (s.contains("£"))
+        else if (s.contains(Symbol.POUND))
             return new CurrencySymbol(Currency.getInstance("GBP"));
         else
             throw CurrencyFormatException.forInputString(s);
@@ -34,5 +34,11 @@ class CurrencySymbol implements CurrencyDesignator {
     @NotNull
     public Currency getCurrency() {
         return currency;
+    }
+
+    public static class Symbol {
+        public static final String DOLLAR = "\u0024";
+        public static final String EURO = "\u20ac";
+        public static final String POUND = "\u00A3";
     }
 }

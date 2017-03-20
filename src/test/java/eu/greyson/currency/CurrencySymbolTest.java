@@ -3,6 +3,9 @@ package eu.greyson.currency;
 import org.junit.Before;
 import org.junit.Test;
 
+import static eu.greyson.currency.CurrencySymbol.Symbol.DOLLAR;
+import static eu.greyson.currency.CurrencySymbol.Symbol.EURO;
+import static eu.greyson.currency.CurrencySymbol.Symbol.POUND;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -16,10 +19,10 @@ public class CurrencySymbolTest {
 
     @Before
     public void setUp() {
-        dollar1 = CurrencyFactory.getCurrency("$");
-        dollar2 = CurrencyFactory.getCurrency("$");
-        euro = CurrencyFactory.getCurrency("€");
-        pound = CurrencyFactory.getCurrency("£");
+        dollar1 = CurrencyFactory.getCurrency(DOLLAR);
+        dollar2 = CurrencyFactory.getCurrency(DOLLAR);
+        euro = CurrencyFactory.getCurrency(EURO);
+        pound = CurrencyFactory.getCurrency(POUND);
     }
 
     @Test
@@ -34,11 +37,11 @@ public class CurrencySymbolTest {
 
     @Test
     public void test_should_return_$_symbol_for_dollar() {
-        assertEquals("$", dollar1.getSymbol());
+        assertEquals(DOLLAR, dollar1.getSymbol());
     }
 
     @Test(expected = CurrencyFormatException.class)
     public void test_should_throw_exception_from_invalid_symbol_cause() {
-        CurrencyFactory.getCurrency("$#");
+        CurrencyFactory.getCurrency(DOLLAR + "#");
     }
 }

@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import static eu.greyson.currency.CurrencySymbol.Symbol.DOLLAR;
+import static eu.greyson.currency.CurrencySymbol.Symbol.EURO;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -35,13 +37,13 @@ public class CurrencyCodeTest {
 
     @Test
     public void test_should_return_$_symbol() {
-        assertEquals("$", dollar1.getSymbol());
+        assertEquals(DOLLAR, dollar1.getSymbol());
     }
 
     @Ignore("Need to add locale")
     @Test
     public void test_should_return_euro_symbol() {
-        assertEquals("€", euro.getSymbol());
+        assertEquals(EURO, euro.getSymbol());
     }
 
     @Ignore("Need to add locale")
