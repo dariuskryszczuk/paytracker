@@ -24,7 +24,7 @@ class UnofficialCurrencyCode implements CurrencyDesignator {
     static UnofficialCurrencyCode valueOf(String s) throws CurrencyFormatException {
         switch (s.trim().toUpperCase()) {
             case "CNH":
-            case "CNT":
+            case "CTN":
             case "RMB":
                 return new UnofficialCurrencyCode(Currency.getInstance("CNY"));
             case "GGP":

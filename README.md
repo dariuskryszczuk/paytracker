@@ -1,14 +1,14 @@
 # PAYTRACKER 9000
 PAYTRACKER 9000 is a simple console application that lets you write or load your payments in the format:
 
-currency code/symbol amount \
+<em>currency code/symbol amount</em> \
 or \
-amount currency code/symbol
+<em>amount currency code/symbol</em>
 
 <u>Example:</u> \
 USD 800 \
 200 CZK \
-USD$
+$5
 
 
 Supported formats of currency codes are ISO 4217. Aggregated payments are printed every minute. Write 'quit' to exit the application. 
@@ -23,6 +23,6 @@ Supported formats of currency codes are ISO 4217. Aggregated payments are printe
 
 <h3>How to run:</h3>
 <ul>
-    <li> with paytracker/run.bat (windows) or paytracker/run.sh (linux) scripts </li>
+    <li> with paytracker/run.bat (windows) or paytracker/run.sh (linux) scripts or </li>
     <li> <code>java -jar paytracker-1.0.jar</code></li>
 </ul>

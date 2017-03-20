@@ -16,11 +16,13 @@ public class CurrencyFactoryTest {
 
     private List<String> symbols;
     private List<String> codes;
+    private List<String> unofficialCodes;
 
     @Before
     public void setUp() {
         symbols = Arrays.asList(DOLLAR, EURO, POUND);
         codes = Arrays.asList("USD", "EUR", "GBP", "GNF", "INR", "czk", "cZk");
+        unofficialCodes = Arrays.asList("CNH", "CTN", "RMB", "GGP", "IMP", "JEP", "KID", "NIS");
     }
 
     @Test
@@ -31,5 +33,10 @@ public class CurrencyFactoryTest {
     @Test
     public void test_should_create_instances_of_currency_symbol_class() {
         symbols.forEach(s -> assertThat(CurrencyFactory.getCurrency(s), instanceOf(CurrencySymbol.class)));
+    }
+
+    @Test
+    public void test_should_create_instances_of_unofficial_class() {
+        unofficialCodes.forEach(c -> assertThat(CurrencyFactory.getCurrency(c), instanceOf(UnofficialCurrencyCode.class)));
     }
 }
