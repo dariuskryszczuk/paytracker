@@ -1,17 +1,12 @@
 package eu.greyson.parser;
 
-import com.google.common.io.Resources;
-import eu.greyson.currency.CurrencyDesignator;
 import eu.greyson.payment.Payable;
-import eu.greyson.payment.Payment;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 
