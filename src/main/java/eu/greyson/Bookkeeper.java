@@ -6,7 +6,10 @@ import eu.greyson.payment.Payment;
 
 import java.util.*;
 
-class Bookkeeper {
+/**
+ * {@code Bookkeeper} class is responsible for bookkeeping all the money operations
+ */
+public class Bookkeeper {
 
     private static List<Payable> payments = new ArrayList<>();
 
@@ -14,7 +17,7 @@ class Bookkeeper {
         Bookkeeper.payments.add(p);
     }
 
-    static void addAll(List<Payable> payableList) {
+    public static void addAll(List<Payable> payableList) {
         Bookkeeper.payments.addAll(payableList);
     }
 
@@ -22,7 +25,7 @@ class Bookkeeper {
         return new ArrayList<>(payments);
     }
 
-    Collection<Payable> countTotals() {
+    public Collection<Payable> countTotals() {
         Map<String, Payable> totals = new HashMap<>();
         getPayments().forEach(p -> {
             CurrencyDesignator currency = p.getCurrency();

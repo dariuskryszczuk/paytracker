@@ -1,7 +1,20 @@
-# paytracker
-<h3>How to install:</h3> 
-mvn clean isntall
+# PAYTRACKER 9000
+PAYTRACKER 9000 is a simple console application that let you write or load your payments in the format:
+
+<currency code/symbol> or <amount> <currency code/symbol>
+
+Supported formats of currency codes are ISO 4217. Aggregated payments are printed every minute. Write 'quit' to exit the application. 
+<h3>Prerequisites</h3>
+<ul>
+    <li> Java 8 </li>
+    <li> Apache Maven </li>   
+</ul>
+
+<h3>How to compile:</h3> 
+mvn clean install
 
 <h3>How to run:</h3>
-run.bat (windows) or run.sh (linux)
-
+<ul>
+    <li> with paytracker/run.bat (windows) or paytracker/run.sh (linux) scripts </li>
+    <li> <code>java -jar paytracker-1.0.jar</code></li>
+</ul>

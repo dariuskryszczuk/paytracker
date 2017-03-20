@@ -8,6 +8,6 @@ class CurrencyFormatException extends IllegalArgumentException {
     }
 
     static CurrencyFormatException forInputString(String s) {
-        return new CurrencyFormatException("Can't get Currency from input string: \"" + s + "\"");
+        return new CurrencyFormatException("Incorrect input: wrong currency code \"" + s + "\"");
     }
 }
