@@ -61,7 +61,7 @@ public class PrintManager {
         if (f != null) {
             try {
                 Bookkeeper.addAll(fileParser.parse(f.getPath()));
-                System.out.println("Loaded");
+                System.out.println("\nFile \"" + f.getName() + "\" successfully loaded.");
             } catch (Exception e) {
                 System.out.println(e.getLocalizedMessage());
             }
