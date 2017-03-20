@@ -47,6 +47,4 @@ public class MoneyCalculatorTest {
         plus(dollar300, euro20);
     }
 
-
-
 }

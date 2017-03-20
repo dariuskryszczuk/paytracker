@@ -20,7 +20,9 @@ public class MoneyCalculator {
 
     public static Payable sum(Payable p1, Payable... p2) {
         BigDecimal sum = p1.getAmount();
-        Arrays.asList(p2).forEach(pay -> sum.add(pay.getAmount()));
+        for (Payable p : p2) {
+            sum = sum.add(p.getAmount());
+        }
         return new Payment(sum, p1.getCurrency());
     }
 
@@ -36,7 +38,7 @@ public class MoneyCalculator {
     @NotNull
     public static Payable minus(Payable p1, Payable p2) {
         if (p1.isSameCurrency(p2.getCurrency())) {
-            BigDecimal min = p1.getAmount().min(p2.getAmount());
+            BigDecimal min = p1.getAmount().subtract(p2.getAmount());
             return new Payment(min, p1.getCurrency());
         }
         throw new UnsupportedMoneyOperation("Can't subtract payments with different currencies!");
