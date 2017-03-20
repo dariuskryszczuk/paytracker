@@ -21,6 +21,7 @@ public class Paytracker {
             try {
                 String input = printPaymentQuestion();
                 if (input.equalsIgnoreCase("quit")) {  break; }
+                if (input.equalsIgnoreCase("print")) {printTotalTable(); continue;}
                 Payable p = new PaymentParser(new CurrencyParser(), new AmountParser()).parse(input);
                 Bookkeeper.add(p);
             } catch (Exception e) {

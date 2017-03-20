@@ -18,15 +18,16 @@ public class PrintManager {
 
     public static void printWelcome() {
         StringBuilder sb = new StringBuilder();
-        sb.append("********************************************************************************************\n");
-        sb.append("                             WELCOME TO THE PAYTRACKER 9000\n");
-        sb.append("********************************************************************************************\n");
-        sb.append("Welcome to the payment tracker 'PAYTRACKER'. You can load or add new Payments in the format: \n");
-        sb.append("\n<currency code/symbol> <amount> \n");
-        sb.append("              or\n");
-        sb.append("<amount> <currency code/symbol> \n\n");
-        sb.append("Supported formats of currency codes are ISO 4217. Aggregated payments are printed every minute.");
-        sb.append("Write 'quit' to exit the application.");
+        sb.append("****************************************************************************************************\n");
+        sb.append("                                  WELCOME TO THE PAYTRACKER 9000\n");
+        sb.append("****************************************************************************************************\n");
+        sb.append("Welcome to the payment tracker 'PAYTRACKER 9000'. You can load or add new Payments in the format: \n\n");
+        sb.append("                                <currency code/symbol> <amount> \n");
+        sb.append("                                              or\n");
+        sb.append("                                <amount> <currency code/symbol> \n\n");
+        sb.append("Supported formats of currencies are ISO 4217 currency codes or symbols \u0024, \u20ac and \u00A3. Aggregated \n");
+        sb.append("payments are printed every minute or when 'print' is written. Write 'quit' to exit the application. \n");
+        sb.append("****************************************************************************************************\n");
         System.out.print(sb.toString());
     }
 
@@ -51,7 +52,6 @@ public class PrintManager {
         new Bookkeeper().countTotals().forEach(pay -> System.out.println("  " + pay.getDisplayName()));
         System.out.format("+------------------+%n");
         System.out.println();
-//        printPaymentQuestion();
     }
 
     public static void showDialog() {
@@ -78,7 +78,7 @@ public class PrintManager {
 
     public static String printPaymentQuestion() {
         try {
-            System.out.print("Payment: ");
+            System.out.print("> ");
             return BUFFERED_READER.readLine();
         } catch (IOException e) {
             throw new RuntimeException("Error when accepting users payment.");

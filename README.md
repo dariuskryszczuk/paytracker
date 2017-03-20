@@ -10,8 +10,7 @@ USD 800 \
 200 CZK \
 $5
 
-
-Supported formats of currency codes are ISO 4217. Aggregated payments are printed every minute. Write 'quit' to exit the application. 
+Supported formats of currency codes are ISO 4217. Aggregated payments are printed every minute or when 'print' is written. Write 'quit' to exit the application. 
 <h3>Prerequisites</h3>
 <ul>
     <li> Java 8 </li>
