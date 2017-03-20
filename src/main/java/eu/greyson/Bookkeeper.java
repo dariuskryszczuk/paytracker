@@ -22,7 +22,7 @@ class Bookkeeper {
         return new ArrayList<>(payments);
     }
 
-    Collection<Payable> countTotals() {
+    synchronized Collection<Payable> countTotals() {
         Map<String, Payable> totals = new HashMap<>();
         getPayments().forEach(p -> {
             CurrencyDesignator currency = p.getCurrency();
