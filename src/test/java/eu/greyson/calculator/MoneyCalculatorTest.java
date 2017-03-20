@@ -3,6 +3,7 @@ package eu.greyson.calculator;
 import eu.greyson.payment.Payable;
 import eu.greyson.payment.Payment;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static eu.greyson.calculator.MoneyCalculator.minus;
@@ -13,6 +14,8 @@ import static eu.greyson.currency.CurrencySymbol.Symbol.DOLLAR;
 import static java.math.BigDecimal.valueOf;
 import static org.junit.Assert.assertEquals;
 
+@Ignore
+@Deprecated
 public class MoneyCalculatorTest {
 
     private Payable dollar300;

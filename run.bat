@@ -1,0 +1,1 @@
+java -jar target/paytracker-1.0.jar

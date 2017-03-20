@@ -11,6 +11,7 @@ import static java.math.BigDecimal.ZERO;
 /**
  * {@code MoneyCalculator} for mathematical operations with {@code Payable} objects.
  */
+@Deprecated
 public class MoneyCalculator {
 
     private MoneyCalculator() {}

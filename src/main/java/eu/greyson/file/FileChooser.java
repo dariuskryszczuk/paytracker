@@ -31,7 +31,7 @@ public abstract class FileChooser extends JFileChooser {
      * @return Picked file or null.
      */
     @Nullable
-    public File chooseFile() {
+    public synchronized File chooseFile() {
         int result = this.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             return this.getSelectedFile();

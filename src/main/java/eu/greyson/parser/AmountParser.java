@@ -1,8 +1,6 @@
 package eu.greyson.parser;
 
-import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +32,8 @@ public class AmountParser implements Parser<BigDecimal> {
         while (matcher.find()) {
             allMatches.add(matcher.group());
         }
-        return StringUtils.join(allMatches, "");
+        StringBuilder sb = new StringBuilder();
+        allMatches.forEach(sb::append);
+        return sb.toString();
     }
 }
