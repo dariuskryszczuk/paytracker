@@ -13,19 +13,27 @@ public class Bookkeeper {
 
     private static List<Payable> payments = new ArrayList<>();
 
-    static void add(Payable p) {
+    synchronized static void add(Payable p) {
         Bookkeeper.payments.add(p);
     }
 
-    public static void addAll(List<Payable> payableList) {
+    synchronized public static void addAll(List<Payable> payableList) {
         Bookkeeper.payments.addAll(payableList);
     }
 
-    List<Payable> getPayments() {
+    private synchronized List<Payable> getPayments() {
         return new ArrayList<>(payments);
     }
 
-    public Collection<Payable> countTotals() {
+    synchronized static void reset() {
+        payments = new ArrayList<>();
+    }
+
+    /**
+     *
+     * @return payments grouped by currency code
+     */
+    public Collection<Payable> groupByCurrencyCode() {
         Map<String, Payable> totals = new HashMap<>();
         getPayments().forEach(p -> {
             CurrencyDesignator currency = p.getCurrency();
@@ -40,12 +48,11 @@ public class Bookkeeper {
         return totals.values();
     }
 
-    static void reset() {
-        payments = new ArrayList<>();
-    }
-
-    List<Payable> getSortedPaymentsByCurrency() {
-        List<Payable> sorted = new ArrayList<>(payments);
+    /**
+     * @return payments sorted by currency code
+     */
+    List<Payable> orderByCurrencyCode() {
+        List<Payable> sorted = new ArrayList<>(getPayments());
         if (sorted.size() > 0) {
             sorted.sort(Comparator.comparing(p -> p.getCurrency().getCurrencyCode()));
         }
