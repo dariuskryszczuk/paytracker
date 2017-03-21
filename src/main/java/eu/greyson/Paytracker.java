@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import static eu.greyson.Bookkeeper.reset;
 import static eu.greyson.print.PrintManager.*;
 
 public class Paytracker {
@@ -22,6 +23,7 @@ public class Paytracker {
                 String input = printPaymentQuestion();
                 if (input.equalsIgnoreCase("quit")) {  break; }
                 if (input.equalsIgnoreCase("print")) {printTotalTable(); continue;}
+                if (input.equalsIgnoreCase("reset")) {printResetOption(); continue;}
                 Parser<Payable> payableParser = new PaymentParser(new CurrencyParser(), new AmountParser());
                 Payable p = payableParser.parse(input);
                 Bookkeeper.add(p);

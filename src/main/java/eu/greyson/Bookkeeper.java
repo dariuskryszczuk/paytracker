@@ -19,7 +19,7 @@ public class Bookkeeper {
         return new ArrayList<>(payments);
     }
 
-    synchronized static void reset() {
+    public synchronized static void reset() {
         payments = new ArrayList<>();
     }
 

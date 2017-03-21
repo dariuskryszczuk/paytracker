@@ -83,4 +83,20 @@ public class PrintManager {
             throw new RuntimeException("Error when accepting users payment.");
         }
     }
+
+    public static void printResetOption() {
+        try {
+            System.out.print("\nReally want to reset the total table count? (Y/N)");
+            String answer = BUFFERED_READER.readLine();
+            if (answer.equalsIgnoreCase("y")) {
+                Bookkeeper.reset();
+                System.out.print("\nTotal table count was successfully reset.\n");
+                printTotalTable();
+            } else {
+                System.out.print("\nCanceling operation.\n");
+            }
+        } catch (IOException io) {
+            throw new RuntimeException("Error when resetting total table count.");
+        }
+    }
 }
