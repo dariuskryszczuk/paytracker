@@ -25,7 +25,8 @@ public class PrintManager {
         sb.append("                                              or\n");
         sb.append("                                <amount> <currency code/symbol> \n\n");
         sb.append("Supported formats of currencies are ISO 4217 currency codes or symbols \u0024, \u20ac and \u00A3. Aggregated \n");
-        sb.append("payments are printed every minute or when 'print' is written. Write 'quit' to exit the application. \n");
+        sb.append("payments are printed every minute or when 'print' is written. Write 'quit' to exit the application or \n");
+        sb.append("'reset' for resetting the total table count. \n");
         sb.append("****************************************************************************************************\n");
         System.out.print(sb.toString());
     }
