@@ -14,7 +14,6 @@ import java.util.List;
 public class PrintManager {
 
     private static final BufferedReader BUFFERED_READER = new BufferedReader(new InputStreamReader(System.in));
-    private static final Bookkeeper BOOKKEEPER = new Bookkeeper();
 
     public static void printWelcome() {
         StringBuilder sb = new StringBuilder();
@@ -49,7 +48,7 @@ public class PrintManager {
         System.out.format("+------------------+%n");
         System.out.format("|       TOTAL      |%n");
         System.out.format("+------------------+%n");
-        BOOKKEEPER.groupByCurrencyCode().forEach(pay -> System.out.println("  " + pay.getDisplayName()));
+        Bookkeeper.groupByCurrencyCode().forEach(pay -> System.out.println("  " + pay.getDisplayName()));
         System.out.format("+------------------+%n");
         System.out.println();
     }
@@ -60,7 +59,7 @@ public class PrintManager {
         File f = new StarterFileChooser().chooseFile();
         if (f != null) {
             try {
-                BOOKKEEPER.addAll(fileParser.parse(f.getPath()));
+                Bookkeeper.addAll(fileParser.parse(f.getPath()));
                 System.out.println("\nFile \"" + f.getName() + "\" successfully loaded.");
             } catch (Exception e) {
                 System.out.println(e.getLocalizedMessage());

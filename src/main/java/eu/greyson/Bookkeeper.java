@@ -7,21 +7,15 @@ import eu.greyson.payment.Payment;
 import java.util.*;
 
 /**
- * {@code Bookkeeper} class is responsible for bookkeeping all the money operations
+ * {@code Bookkeeper} is a static class responsible for bookkeeping all the money operations
  */
 public class Bookkeeper {
 
+    private Bookkeeper() {}
+
     private static List<Payable> payments = new ArrayList<>();
 
-    synchronized static void add(Payable p) {
-        Bookkeeper.payments.add(p);
-    }
-
-    synchronized public static void addAll(List<Payable> payableList) {
-        Bookkeeper.payments.addAll(payableList);
-    }
-
-    private synchronized List<Payable> getPayments() {
+    synchronized static List<Payable> getPayments() {
         return new ArrayList<>(payments);
     }
 
@@ -29,11 +23,19 @@ public class Bookkeeper {
         payments = new ArrayList<>();
     }
 
+    public synchronized static void add(Payable p) {
+        Bookkeeper.payments.add(p);
+    }
+
+    public synchronized static void addAll(List<Payable> payableList) {
+        Bookkeeper.payments.addAll(payableList);
+    }
+
     /**
      *
      * @return payments grouped by currency code
      */
-    public Collection<Payable> groupByCurrencyCode() {
+    public static Collection<Payable> groupByCurrencyCode() {
         Map<String, Payable> totals = new HashMap<>();
         getPayments().forEach(p -> {
             CurrencyDesignator currency = p.getCurrency();
@@ -51,7 +53,7 @@ public class Bookkeeper {
     /**
      * @return payments sorted by currency code
      */
-    List<Payable> orderByCurrencyCode() {
+    static List<Payable> orderByCurrencyCode() {
         List<Payable> sorted = new ArrayList<>(getPayments());
         if (sorted.size() > 0) {
             sorted.sort(Comparator.comparing(p -> p.getCurrency().getCurrencyCode()));

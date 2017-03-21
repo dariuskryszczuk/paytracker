@@ -44,7 +44,7 @@ public class BookkeeperTest {
 
     @Test
     public void test_should_sort_list_of_payments_with_currency_code() {
-        List<Payable> payables = new Bookkeeper().orderByCurrencyCode();
+        List<Payable> payables = Bookkeeper.orderByCurrencyCode();
         assertEquals("CNY 2000", payables.get(0).getDisplayName());
         assertEquals("CZK 300", payables.get(1).getDisplayName());
         assertEquals("HKD 100", payables.get(2).getDisplayName());
@@ -56,7 +56,7 @@ public class BookkeeperTest {
     @Ignore("It's true but hamcrest is silly")
     @Test
     public void test_should_aggregate_payments_with_same_currency_code() {
-        Collection<Payable> totals = new Bookkeeper().groupByCurrencyCode();
+        Collection<Payable> totals = Bookkeeper.groupByCurrencyCode();
         List<Payable> expected = Arrays.asList(
                 new Payment(new BigDecimal(900), CurrencyFactory.getCurrency("USD")),
                 new Payment(new BigDecimal(300), CurrencyFactory.getCurrency("HKD")),
