@@ -20,7 +20,7 @@ public class PrintManager {
         sb.append("****************************************************************************************************\n");
         sb.append("                                  WELCOME TO THE PAYTRACKER 9000\n");
         sb.append("****************************************************************************************************\n");
-        sb.append("Welcome to the payment tracker 'PAYTRACKER 9000'. You can load or add new Payments in the format: \n\n");
+        sb.append("Welcome to the payment tracker 'PAYTRACKER 9000'. You can load or add new payments in the format: \n\n");
         sb.append("                                <currency code/symbol> <amount> \n");
         sb.append("                                              or\n");
         sb.append("                                <amount> <currency code/symbol> \n\n");
