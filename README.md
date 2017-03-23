@@ -25,3 +25,6 @@ Supported formats of currency codes are ISO 4217. Aggregated payments are printe
     <li> with paytracker/run.bat (windows) or paytracker/run.sh (linux) scripts or </li>
     <li> <code>java -jar paytracker-1.0.jar</code></li>
 </ul>
+
+<h3>How to load file with payments</h3>
+User can upload the file with payments on the start of the application. This is done with <code>javax.swing</code>. This means that in this version is supported loading files only with command line or unix terminal. Not command line or teminal emulators like git bash or IntelliJ command line. This will be fixed in the future.
